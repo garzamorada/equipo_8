@@ -2,6 +2,8 @@
 # y devuelva un string con el nombre y apellido 
 # pero con capitalizacion(primera letra mayuscula).
 
+""" hay un metodo de strings que hace esto mismo es capitalize(), podes probar hacerlo con ese metodo para acortar código"""
+
 def capitalize(input):
     try:
         nombre, apellido = input.split()
@@ -18,6 +20,8 @@ def capitalize(input):
 # y imprima por salida estandar(usando print) un triangulo de numeros 
 # de altura igual al numero ingresado. Ej. Si se ingresa el numero 5, 
 # debe imprimir:  1 22 333 4444 55555
+
+"podemos probar mandar un segundo parametro y hacer los triangulos centrados, a la izquierda o derecha usando los metodos center(), rjust() y ljust()"
 
 def traingulo(input):
     for i in range(1, input+1):
