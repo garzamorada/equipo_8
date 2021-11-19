@@ -1,13 +1,15 @@
-# Inicio - Ejercicio nro.3
-print(
-""" 3- Los strings son inmutables, escribir una funcion que reciba 
-    un string, un indice y una letra a modificar de ese string y 
-    que devuelve el string modificado.""")
+# 4- Escribir una funcion que reciba un string con nombre y apellido 
+# y devuelva un string con el nombre y apellido 
+# pero con capitalizacion(primera letra mayuscula).
 
-cadenaIni3=input('Ingrese la cadena inicial: ')
-indice3=input('Ingrese el indice: ')
-nvoCaracter3=input('Ingrese el nuevo caracter: ')
-i3=int(indice3)
-print(cadenaIni3[0:i3]+nvoCaracter3[0:1]+cadenaIni3[i3+1:])
+def capitalize(input):
+    try:
+        # nombres = [nombre.capitalize() for nombre in input.split(" ")]
+        print (" ".join(nombre.capitalize() for nombre in input.split(" ")))
+    except:
+        print ("Ingrese un nombre y apellido")
 
-# Fin - Ejercicio nro.3
+# capitalize("iago martin edelstein")
+# capitalize("manuel")
+
+

@@ -6,21 +6,16 @@
 
 def capitalize(input):
     try:
-        nombre, apellido = input.split()
-        nombreUp = nombre[0].upper() + nombre[1:]
-        apellidoUp = apellido[0].upper() + apellido[1:]
-        print (nombreUp + " " + apellidoUp)
+        # nombres = [nombre.capitalize() for nombre in input.split(" ")]
+        print (" ".join(nombre.capitalize() for nombre in input.split(" ")))
     except:
         print ("Ingrese un nombre y apellido")
 
-# capitalize("iago edelstein")
+# capitalize("iago martin edelstein")
 # capitalize("manuel")
 
-#Extra: a- Escribir una funcion que recibe un numero entero 
-# y imprima por salida estandar(usando print) un triangulo de numeros 
-# de altura igual al numero ingresado. Ej. Si se ingresa el numero 5, 
-# debe imprimir:  1 22 333 4444 55555
 
+<<<<<<< HEAD:src/ejercicio_5.py
 "podemos probar mandar un segundo parametro y hacer los triangulos centrados, a la izquierda o derecha usando los metodos center(), rjust() y ljust()"
 
 def traingulo(input):
@@ -36,3 +31,5 @@ def traingulo(input):
 def countLetters(input):
     listaLetras = list(input)    
     f   
+=======
+>>>>>>> 81acf6de3ce46a5897e39bcd61c8e01d7cd6bf25:src/Ej 5.py
