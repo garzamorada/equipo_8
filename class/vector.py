@@ -1,0 +1,1 @@
+"""clase que maneje un vector de 3D (x,y,z) y tenga como metodos las operaciones (+, -, * y / por un numero)"""
