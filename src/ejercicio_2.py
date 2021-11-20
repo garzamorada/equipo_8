@@ -9,5 +9,3 @@ def invertCase(input):
                \nUsted quizo imprimir {len(input)}
                \nIntentelo nuevamente""")
     
-invertCase("hOLA mUNDO")
-invertCase("hOLA mUNDO"*100)
