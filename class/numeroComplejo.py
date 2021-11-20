@@ -1,1 +1,1 @@
-"""clase que maneje un numero complejo y tenga como metodos las operaciones (+, -, *, /)"""
+"""1 - Crear una clase que represente un numero complejo. Tenga 4 metodos que permita las operaciones matemaaticas basicas (+,-,*,/)."""

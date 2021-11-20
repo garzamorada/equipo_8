@@ -1,0 +1,5 @@
+4- Crear una clase que represente al perfil usuario que ademas tenga una relacion (herencia) con estas dos clases: 
+administrador y reportero (solo tiene lectura de datos).
+ El usuario tiene objeto carrito de compras. 
+ El administrador puede ver a todos los usuarios y lo que tenga adentro. 
+ El reporter solo ve todos los carritos de compra.
