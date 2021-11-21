@@ -22,7 +22,7 @@ def menuOpciones(opcion=0):
         print('  5  - ejercicio 5')
         print('  6  - extra a')
         print('  7  - extra b')
-        print('  10  - objeto matriz')
+        print('  10 - objeto matriz')
         print('  99 - terminar y salir')
         print(' ')
         opcion=int(input('ingrese el número de opcion: '))
@@ -79,6 +79,8 @@ def menuOpciones(opcion=0):
 
         else:
             break
+        tecla=input ('presione retorno (enter) para continuar...')
+        if tecla != None or tecla == None : print('volviendo al menú...')
 
 menuOpciones()
 
