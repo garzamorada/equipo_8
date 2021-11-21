@@ -5,6 +5,11 @@ from src.ejercicio_3 import cambiaCaracter
 from src.ejercicio_4 import capitalize
 from src.ejercicio_5 import segundo
 from src.extra_a import traingulo
+from clases.matriz import Vector,Matriz,cargaMatriz,cargaVector
+
+def listaStingtoInt(lista)
+    for i in range(len(lista)): lista[i] = int(lista[i] )
+    return lista
 
 def menuOpciones(opcion=0):
     while opcion != 99:
@@ -17,6 +22,7 @@ def menuOpciones(opcion=0):
         print('  5  - ejercicio 5')
         print('  6  - extra a')
         print('  7  - extra b')
+        print('  10  - objeto matriz')
         print('  99 - terminar y salir')
         print(' ')
         opcion=int(input('ingrese el número de opcion: '))
@@ -41,7 +47,7 @@ def menuOpciones(opcion=0):
         
         elif opcion == 5:
             numeros=input('ingrese una lista de numero separados por coma: ').split(',')
-            for i in range(len(numeros)): numeros[i] = int(numeros[i] )
+            listaStingtoInt(numeros)
             segundo(numeros)
 
         elif opcion == 6:
@@ -51,6 +57,25 @@ def menuOpciones(opcion=0):
         elif opcion == 7:
             cadenaExtraB=input('ingrese su cadena para contar caractares: ')
             contarCaracteres(cadenaExtraB)
+        elif opcion == 10:
+            matriz1=cargaMatriz()
+            matriz2=cargaMatriz()
+            vector1=cargaVector()
+            matriz1.print()
+            matriz2.print()
+            vector1.print()
+            resultadosuma=matriz1.suma(matriz2)
+            resultadoresta=matriz1.resta(matriz2)
+            resultadomultiplicacion=matriz1.multiplicacionVector(vector1)
+            resultadodivision=matriz1.dividirVector(vector1)
+            print(" el resultado de la suma es: ")
+            resultadosuma.print()
+            print(" el resultado de la resta es: ")
+            resultadoresta.print()
+            print(" el resultado de la multiplicacion es: ")
+            resultadomultiplicacion.print()
+            print(" el resultado de la division es: ")
+            resultadodivision.print()
 
         else:
             break

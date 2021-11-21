@@ -134,23 +134,4 @@ class Vector():
 
 
 
-matriz1=cargaMatriz()
-matriz2=cargaMatriz()
-vector1=cargaVector()
-matriz1.print()
-matriz2.print()
-vector1.print()
-resultadosuma=matriz1.suma(matriz2)
-resultadoresta=matriz1.resta(matriz2)
-resultadomultiplicacion=matriz1.multiplicacionVector(vector1)
-resultadodivision=matriz1.dividirVector(vector1)
-print(" el resultado de la suma es: ")
-resultadosuma.print()
-print(" el resultado de la resta es: ")
-resultadoresta.print()
-print(" el resultado de la multiplicacion es: ")
-resultadomultiplicacion.print()
-print(" el resultado de la division es: ")
-resultadodivision.print()
-
     
