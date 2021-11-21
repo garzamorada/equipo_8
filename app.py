@@ -7,7 +7,7 @@ from src.ejercicio_5 import segundo
 from src.extra_a import traingulo
 from clases.matriz import Vector,Matriz,cargaMatriz,cargaVector
 
-def listaStingtoInt(lista)
+def listaStingtoInt(lista):
     for i in range(len(lista)): lista[i] = int(lista[i] )
     return lista
 
