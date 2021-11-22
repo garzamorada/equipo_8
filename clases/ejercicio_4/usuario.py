@@ -1,5 +1,6 @@
-class Usuario(object):
-    def __init__(self, nombre, apellido, email, password):
+class Usuario:
+    def __init__(self, usuario, nombre, apellido, email, password):
+        self.usuario = usuario
         self.nombre = nombre
         self.apellido = apellido
         self.email = email
@@ -14,14 +15,19 @@ class Usuario(object):
     # Pide al usuario una clave y chequea si es 
     # la misma que fue declarada al crear el usuario
     # Es usada para validar al usuario al cambiar su email y password
-    def validarPassword(self):
-        passwordIngresada = input(f"Ingrese su password: ")
-        if passwordIngresada == self.password:
-            print("La password es correcta")
+    def login(self):
+        enteredUsuario = input(f"Ingrese su usuario: ")
+        enteredPassword = input(f"Ingrese su contraseña: ")
+        if self.usuario == enteredUsuario  and self.password == enteredPassword:
+            print("Usted ha sido verificado")
             print("-" * 20)
             return True
-        else:
-            print(f"La password es incorrecta. Intente nuevamente")
+        
+        elif self.password != enteredPassword:
+            print (f"Contraseña incorrecta")
+                    
+        elif self.usuario not in listaUsuarios:
+            print(f"No encontramos un usuario con ese nombre")
             print("-" * 20)
     
     # Valida al usuario como tal con validarPassword()
@@ -29,29 +35,27 @@ class Usuario(object):
     # Si las contraseñas ingresadas son iguales, actualiza el valor self.password 
     def cambiarPassword(self):
         print(f"Para cambiar su contraseña necesitamos verificarlo como usuario")
-        if self.validarPassword() == True:
+        if self.login() == True:
             newPassword = input(f"Ingrese su nueva password: ")
             retryNewPassword = input(f"Para confirmar, ingrese nuevamente su nueva password: ")
-
+            
             if newPassword == retryNewPassword:
                 self.password = newPassword
                 print(f"Su password ha sido cambiada a {self.password} ")
-            
             else:
                 print(f"Sus passwords no coinciden. Ingreso {newPassword} y {retryNewPassword}")
-        
         else:
             print(f"La password es incorrecta. Intente nuevamente")
             print("-" * 20)
     
     # Idéntico en estructura a cambiarPassword()
-    # Valida al usuario como tal con validarPassword()
+    # Valida al usuario como tal con login()
     # Si la contraseña que ingresa es correcta pide que se ingrese la contraseña
     # Si las contraseñas ingresadas son iguales, actualiza el valor self.email 
     def cambiarEmail(self):
         print(f"Para cambiar su email necesitamos verificarlo como usuario")
         
-        if self.validarPassword() == True:
+        if self.login() == True:
             newEmail = input(f"Ingrese su nuevo email: ")
             retrynewEmail = input(f"Para confirmar, ingrese nuevamente su nuevo email: ")
 
@@ -67,7 +71,7 @@ class Usuario(object):
             print("-" * 20)
 
 
-Juan = Usuario("juan", "carlos", "juancarlos@gmail.com", "password")
+Juan = Usuario("carlos", "juancarlos@gmail.com", "password")
 Juan.presentarse()
 Juan.cambiarPassword()
 Juan.cambiarEmail()
