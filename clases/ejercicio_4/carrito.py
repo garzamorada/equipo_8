@@ -33,7 +33,34 @@ class Carrito:
         print( ' ')
         print('El total a pagar es ARS$ ',total)
 
+    def menuOpciones(self,emuladorDB):
+        opcion=0
+        while opcion != 99:
+            print('----------------------------------')
+            print(' 1  -  Listar Productos en Stock')
+            print(' 2  -  Ver Carrito de Compras')
+            print(' 3  -  Vaciar Carrito de Compras')
+            print(' 4  -  Confirmar Compra y Salir')
+            print(' 5  -  Cancelar Compra y Salir')
+            print('----------------------------------')
+            opcion=int(input('ingrese la opcipn deseada: '))
 
-
+            if opcion==1:
+                self.muestraProductos(emuladorDB)
+                self.agregarAlCarrito(emuladorDB)
+            elif opcion==2:
+                self.muestraCarrito()
+            elif opcion==3:
+                self.listaDeCompras.clear()
+            elif opcion==4:
+                print('el total a pagar es de ARS$ ',self.TotalAPagar)
+                print('gracias por su compra')
+                opcion=99
+                break
+            elif opcion==5:
+                self.listaDeCompras.clear()
+                print('lo esperamos nuevamente')
+                opcion==99
+                break
 
 
