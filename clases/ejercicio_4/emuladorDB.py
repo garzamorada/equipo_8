@@ -1,24 +1,26 @@
 class emuladorDB:
     def __init__(self):
-        listaUsuarios=[]
-        listaProductos=[]
+        self.listaUsuarios=[]
+        self.listaProductos=[]
 
     def addProducto(self,producto):
-        listaProductos.append(producto)
+       self.listaProductos.append(producto)
 
     def addUsuario(self,usuario):
-        listaUsuarios.append(usuario)
+        self.listaUsuarios.append(usuario)
 
-    def listarUsuarios(self):
-        for usuario in listaUsuarios:
-            usuario.print()
+    def listarUsuarios(self,level='cliente'):
+        for usuario in self.listaUsuarios:
+            if usuario.level==level:
+                usuario.print()
+
 
     def listarProductos(self):
-        for producto in listaProductos:
+        for producto in self.listaProductos:
             producto.print()
 
     def listarProductosEnStock(self):
-        for producto in listaProductos:
+        for producto in self.listaProductos:
             if producto.stock > 0: producto.print()
 
     def updateUsuario(self,email,opcion,valor):
@@ -28,7 +30,7 @@ class emuladorDB:
                     user.password=valor
                     break
                 elif opcion=='email':
-                    user.email=email
+                    user.email=valor
                     break
 
     def createUsuario(self,email,apellido,nombre,password,level):
@@ -47,5 +49,21 @@ class emuladorDB:
                 return True
             else:
                 return False
+
+    def createProducto(self,codigo,nombre,precio,stock):
+        producto=Producto(codigo,nombre,precio,stock)
+        self.addProducto(producto)
+
+    def updateProducto(self,codigo,opcion,valor):
+        for producto in self.listaProductos:
+            if producto.codigo == codigo:
+                if opcion=='precio':
+                    producto.precio=valor
+                    break
+                elif opcion=='nombre':
+                    producto.nombre=valor
+                elif opcion=='stock':
+                    producto.stock=valor
+                    break
 
             
