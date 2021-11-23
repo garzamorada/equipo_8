@@ -80,7 +80,8 @@ def menuOpciones(opcion=0):
         else:
             break
         tecla=input ('presione retorno (enter) para continuar...')
-        if tecla != None or tecla == None : print('volviendo al menú...')
+        if tecla != None or tecla == None : 
+            print('volviendo al menú...')
 
 menuOpciones()
 
