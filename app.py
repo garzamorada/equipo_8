@@ -5,7 +5,9 @@ from src.ejercicio_3 import cambiaCaracter
 from src.ejercicio_4 import capitalize
 from src.ejercicio_5 import segundo
 from src.extra_a import traingulo
-from clases.matriz import Vector,Matriz,cargaMatriz,cargaVector
+from clases.matriz import Matriz,cargaMatriz
+from clases.numeroComplejo import NumeroComplejo,cargaComplejo
+from clases.vector import Vector, cargaVector, cargaEscalar
 
 def listaStingtoInt(lista):
     for i in range(len(lista)): lista[i] = int(lista[i] )
@@ -22,6 +24,8 @@ def menuOpciones(opcion=0):
         print('  5  - ejercicio 5')
         print('  6  - extra a')
         print('  7  - extra b')
+        print('  8  - objeto Numero Complejo')
+        print('  9  - objeto Vector')
         print('  10 - objeto matriz')
         print('  99 - terminar y salir')
         print(' ')
@@ -57,6 +61,45 @@ def menuOpciones(opcion=0):
         elif opcion == 7:
             cadenaExtraB=input('ingrese su cadena para contar caractares: ')
             contarCaracteres(cadenaExtraB)
+
+        elif opcion == 8:
+            complejo1=cargaComplejo()
+            complejo2=cargaComplejo()
+            complejo1.print()
+            complejo2.print()
+            resultadosuma=complejo1.suma(complejo2)
+            resultadoresta=complejo1.resta(complejo2)
+            resultadomultiplicacion=complejo1.multiplicacion(complejo2)
+            resultadodivision=complejo1.division(complejo2)
+            print(" el resultado de la suma es: ")
+            resultadosuma.print()
+            print(" el resultado de la resta es: ")
+            resultadoresta.print()
+            print(" el resultado de la multiplicacion es: ")
+            resultadomultiplicacion.print()
+            print(" el resultado de la division es: ")
+            resultadodivision.print()
+
+        elif opcion == 9:
+            vector1=cargaVector()
+            vector2=cargaVector()
+            escalar=cargaEscalar()
+            vector1.print()
+            vector2.print()
+            print(' escalar: ',escalar)
+            resultadosuma=vector1.suma(vector2)
+            resultadoresta=vector1.resta(vector2)
+            resultadomultiplicacion=vector1.multiplicacion(escalar)
+            resultadodivision=vector1.division(escalar)
+            print(" el resultado de la suma es: ")
+            resultadosuma.print()
+            print(" el resultado de la resta es: ")
+            resultadoresta.print()
+            print(" el resultado de la multiplicacion es: ")
+            resultadomultiplicacion.print()
+            print(" el resultado de la division es: ")
+            resultadodivision.print()
+
         elif opcion == 10:
             matriz1=cargaMatriz()
             matriz2=cargaMatriz()

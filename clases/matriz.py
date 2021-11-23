@@ -1,48 +1,31 @@
 """3- Crear una clase que represente una matriz de 3x3 dimensiones. 
 Tengan 4 metodos que permitan las operaciones matemaaticas basicas (+,-,* por un vector)."""
 
+from clases.vector import Vector
+
 def cargaMatriz():
-        print("  ")
-        print("ingrese los elementos separados por coma")
-        print("de la matriz de acuerdo al siguiente modelo:")
-        print("  ")
-        print("  a1  a2  a3  ")
-        print("  b1  b2  b3  ")
-        print("  c1  c2  c3  ")
-        print("  ")
-        elementos = input("elementos: a1,a2,a3,b1,b2,b3,c1,c2,c3: ").split(",")
-        print("  ")
+    print("  ")
+    print("ingrese los elementos separados por coma")
+    print("de la matriz de acuerdo al siguiente modelo:")
+    print("  ")
+    print("  a1  a2  a3  ")
+    print("  b1  b2  b3  ")
+    print("  c1  c2  c3  ")
+    print("  ")
+    elementos = input("elementos: a1,a2,a3,b1,b2,b3,c1,c2,c3: ").split(",")
+    print("  ")
 
-        a1 = int(elementos[0])
-        a2 = int(elementos[1])
-        a3 = int(elementos[2])
-        b1 = int(elementos[3])
-        b2 = int(elementos[4])
-        b3 = int(elementos[5])
-        c1 = int(elementos[6])
-        c2 = int(elementos[7])
-        c3 = int(elementos[8])
+    a1 = int(elementos[0])
+    a2 = int(elementos[1])
+    a3 = int(elementos[2])
+    b1 = int(elementos[3])
+    b2 = int(elementos[4])
+    b3 = int(elementos[5])
+    c1 = int(elementos[6])
+    c2 = int(elementos[7])
+    c3 = int(elementos[8])
 
-        return Matriz(a1,a2,a3,b1,b2,b3,c1,c2,c3)
-
-def cargaVector():
-        print("  ")
-        print("ingrese los elementos separados por coma")
-        print("del vector de acuerdo al siguiente modelo:")
-        print("  ")
-        print("  a1  ")
-        print("  a2  ")
-        print("  a3  ")
-        print("  ")
-        elementos = input("elementos: a1,a2,a3: ").split(",")
-        print("  ")
-
-        a1 = int(elementos[0])
-        a2 = int(elementos[1])
-        a3 = int(elementos[2])
-
-        return Vector(a1,a2,a3)
-
+    return Matriz(a1,a2,a3,b1,b2,b3,c1,c2,c3)
 
 
 class Matriz():
@@ -115,21 +98,6 @@ class Matriz():
         print(str(self.a1).center(6) + str(self.a2).center(6) + str(self.a3).center(6))
         print(str(self.b1).center(6) + str(self.b2).center(6) + str(self.b3).center(6))
         print(str(self.c1).center(6) + str(self.c2).center(6) + str(self.c3).center(6))
-        print("  ")
-
-
-class Vector():
-    def __init__(self,a1,a2,a3):
-        self.a1 = a1
-        self.a2 = a2
-        self.a3 = a3
-
-    def print(self):
-        print("  ")
-        print("  vector:  ")
-        print(str(self.a1).center(6))
-        print(str(self.a2).center(6))
-        print(str(self.a3).center(6))
         print("  ")
 
 
