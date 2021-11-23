@@ -1,4 +1,3 @@
-from main import listaUsuarios
 class Usuario:
     def __init__(self, usuario, nombre, apellido, email, password):
         self.usuario = usuario

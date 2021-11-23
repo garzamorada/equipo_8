@@ -21,25 +21,33 @@ class emuladorDB:
 
     def listarProductosEnStock(self):
         for producto in self.listaProductos:
-            if producto.stock > 0: producto.print()
+            if producto.cantidad > 0: producto.print()
 
     def updateUsuario(self,email,opcion,valor):
         for user in self.listaUsuarios:
             if user.email == email:
+
+                self.listaUsuarios.remove(user)
+
                 if opcion=='password':
                     user.password=valor
                     break
                 elif opcion=='email':
                     user.email=valor
                     break
+                elif opcion=='carrito':
+                    user.carrito=valor
+                    break
+                
+                self.listaUsuarios.append(user)
 
     def createUsuario(self,email,apellido,nombre,password,level):
         if level == 'cliente':
-            usuario= Cliente(email,apellido,nombre,password,level)
+            usuario= Cliente(email,apellido,nombre,password )
         elif level == 'admin':
-            usuario= Admin(email,apellido,nombre,password,level)
+            usuario= Admin(email,apellido,nombre,password)
         elif level == 'reporter':
-            usuario= Reporter(email,apellido,nombre,password,level)
+            usuario= Reporter(email,apellido,nombre,password)
                 
         self.addUsuario(usuario)
 
