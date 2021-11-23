@@ -53,6 +53,8 @@ class Carrito:
             elif opcion==3:
                 self.listaDeCompras.clear()
             elif opcion==4:
+                for producto in self.listaDeCompras:
+                    emuladorDB.updateProducto(producto.codigo,'restastock',producto.stock)
                 print('el total a pagar es de ARS$ ',self.TotalAPagar)
                 print('gracias por su compra')
                 opcion=99

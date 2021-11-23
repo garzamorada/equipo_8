@@ -62,8 +62,12 @@ class emuladorDB:
                     break
                 elif opcion=='nombre':
                     producto.nombre=valor
-                elif opcion=='stock':
-                    producto.stock=valor
+                    break
+                elif opcion=='restastock':
+                    producto.stock=producto.stock-valor
+                    break
+                elif opcion=='sumastock':
+                    producto.stock=producto.stock+valor
                     break
 
             
