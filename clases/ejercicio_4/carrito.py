@@ -8,6 +8,7 @@ class Carrito:
         emuladorDB.listarProductosEnStock()
     
     def agregarAlCarrito(self,emuladorDB):
+        self.muestraProductos()
         print(' ')
         item=input('ingrese el codigo del producto: ')
         cantidad=int(input('ingrese la cantidad deseada: '))
@@ -34,6 +35,9 @@ class Carrito:
         print('El total a pagar es ARS$ ',total)
 
     def eliminarDelCarrito(self,item):
+        self.muestraCarrito()
+        print(' ')
+        item=input('ingrese el codigo del producto a eliminar: ')
         if item in self.listaDeCompras:
             for producto in self.listaDeCompras:
                 if producto.codigo == item:
