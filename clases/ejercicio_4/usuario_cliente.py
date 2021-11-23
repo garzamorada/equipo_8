@@ -1,6 +1,7 @@
 from usuario import Usuario
 
 class Cliente(Usuario):
-    Usuario.__init__(self, usuario, nombre, apellido, email)
-    
+    def __init__(self, usuario, nombre, apellido, email):
+        Usuario.__init__(self, usuario, nombre, apellido, email)
+        
     
