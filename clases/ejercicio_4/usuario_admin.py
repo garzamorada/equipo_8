@@ -1,5 +1,5 @@
-from clases.ejercicio_4 import usuario
-from clases.ejercicio_4 import emuladorDB
+from clases.ejercicio_4.usuario import Usuario
+from clases.ejercicio_4.emuladorDB import emuladorDB
 
 
 class Admin(Usuario):
