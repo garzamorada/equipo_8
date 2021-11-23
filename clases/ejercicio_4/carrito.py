@@ -4,8 +4,8 @@ class Carrito:
         self.TotalAPagar=0
     
     def muestraProductos(self,emuladorDB):
-        print('Codigo'.ljust(10),' - ','Nombre'.rjust(30),' : ','Precio'.ljust(11),' - ','Stock'.rjust(15))
-        emuladorDB.listarProductosEnStock()
+        print('Codigo'.ljust(10),' - ','Nombre'.rjust(30),' : ','Precio'.ljust(11),' - ','cantidad'.rjust(15))
+        emuladorDB.listarProductosEncantidad()
     
     def agregarAlCarrito(self,emuladorDB):
         print(' ')
@@ -13,13 +13,13 @@ class Carrito:
         cantidad=int(input('ingrese la cantidad deseada: '))
         if item in emuladorDB.listaproductos:
             for producto in emuladorDB.listaProductos:
-                if producto.codigo==item and producto.stock >= cantidad:
-                    producto.stock=cantidad
+                if producto.codigo==item and producto.cantidad >= cantidad:
+                    producto.cantidad=cantidad
                     self.listaDeCompras.append(producto)
                     self.TotalAPagar+=int(producto.precio)*cantidad
-                elif producto.codigo==item and producto.stock < cantidad:
+                elif producto.codigo==item and producto.cantidad < cantidad:
                     print(' ')
-                    print('la cantidad supera al stock, por favor ingrese una cantidad menor')
+                    print('la cantidad supera al cantidad, por favor ingrese una cantidad menor')
         else:
             print(' ')
             print('No se encuentra el codigo de producto')
@@ -29,7 +29,7 @@ class Carrito:
         total=0
         for producto in self.listaDeCompras:
             producto.print()
-            total+=producto.precio*producto.stock
+            total+=producto.precio*producto.cantidad
         print( ' ')
         print('El total a pagar es ARS$ ',total)
 
@@ -37,7 +37,7 @@ class Carrito:
         opcion=0
         while opcion != 99:
             print('----------------------------------')
-            print(' 1  -  Listar Productos en Stock')
+            print(' 1  -  Listar Productos en cantidad')
             print(' 2  -  Ver Carrito de Compras')
             print(' 3  -  Vaciar Carrito de Compras')
             print(' 4  -  Confirmar Compra y Salir')
@@ -54,7 +54,7 @@ class Carrito:
                 self.listaDeCompras.clear()
             elif opcion==4:
                 for producto in self.listaDeCompras:
-                    emuladorDB.updateProducto(producto.codigo,'restastock',producto.stock)
+                    emuladorDB.updateProducto(producto.codigo,'restacantidad',producto.cantidad)
                 print('el total a pagar es de ARS$ ',self.TotalAPagar)
                 print('gracias por su compra')
                 opcion=99

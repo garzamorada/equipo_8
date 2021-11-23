@@ -1,5 +1,4 @@
 from clases.ejercicio_4.usuario import Usuario
-from clases.ejercicio_4.emuladorDB import emuladorDB
 
 
 class Admin(Usuario):
@@ -12,13 +11,9 @@ class Admin(Usuario):
     def verUsuarios(self,listaUsuarios):
         for usuario in listaUsuarios:
             if usuario.level == 'cliente':
-            usuario.print()
+                usuario.print()
     
-     #Por defecto ponemos el self en los metodos
-     #Llamo a los metdos del objeto que contiene las listas de usuarios y carritos
-    
-
-    def verCarrito(self,listaUsuarios):
+    def verCarritos(self,listaUsuarios):
         for usuario in listaUsuarios:
             if usuario.level == 'cliente':
-            usuario.carrito.print()
+                usuario.carrito.print()
