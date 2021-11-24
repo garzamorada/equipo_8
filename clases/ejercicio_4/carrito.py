@@ -1,3 +1,5 @@
+from producto import Producto
+
 class Carrito:
     def __init__(self):
         self.listaDeCompras=[]
@@ -8,20 +10,22 @@ class Carrito:
         emuladorDB.listarProductosEnStock()
     
     def agregarAlCarrito(self,emuladorDB):
-        self.muestraProductos()
+        self.muestraProductos(emuladorDB)
         print(' ')
         item=input('ingrese el codigo del producto: ')
         cantidad=int(input('ingrese la cantidad deseada: '))
-        if item in emuladorDB.listaProductos:
-            for producto in emuladorDB.listaProductos:
-                if producto.codigo==item and producto.cantidad >= cantidad:
-                    producto.cantidad=cantidad
-                    self.listaDeCompras.append(producto)
-                    self.TotalAPagar+=int(producto.precio)*cantidad
-                elif producto.codigo==item and producto.cantidad < cantidad:
-                    print(' ')
-                    print('la cantidad supera al cantidad, por favor ingrese una cantidad menor')
-        else:
+        find = False
+        for producto in emuladorDB.listaProductos:
+            if producto.codigo==item and producto.cantidad >= cantidad:
+                productoCarrito=Producto(item,producto.nombre,producto.precio,cantidad)
+                self.listaDeCompras.append(productoCarrito)
+                self.TotalAPagar+=int(producto.precio)*cantidad
+                find = True
+            elif producto.codigo==item and producto.cantidad < cantidad:
+                print(' ')
+                print('la cantidad supera al cantidad, por favor ingrese una cantidad menor')
+                find = True
+        if find == False:
             print(' ')
             print('No se encuentra el codigo de producto')
         
@@ -34,16 +38,15 @@ class Carrito:
         print( ' ')
         print('El total a pagar es ARS$ ',total)
 
-    def eliminarDelCarrito(self,item):
+    def eliminarDelCarrito(self):
         self.muestraCarrito()
         print(' ')
         item=input('ingrese el codigo del producto a eliminar: ')
-        if item in self.listaDeCompras:
-            for producto in self.listaDeCompras:
-                if producto.codigo == item:
-                    self.TotalAPagar = self.TotalAPagar-(producto.precio*producto.cantidad)
-                    self.listaDeCompras.remove(producto)
-        print('se elimino el producto de la lista')
-        print('El total a pagar es ARS$ ',self.listaDeCompras)
+        for producto in self.listaDeCompras:
+            if producto.codigo == item:
+                self.TotalAPagar = self.TotalAPagar-(producto.precio*producto.cantidad)
+                self.listaDeCompras.remove(producto)
+                print('se elimino el producto de la lista')
+                print('El total a pagar es ARS$ ',self.TotalAPagar)
 
 

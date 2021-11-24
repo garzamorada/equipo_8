@@ -1,19 +1,17 @@
+from usuario_cliente import Cliente
+from usuario_admin import Admin
+from usuario_reporter import Reporter
+from producto import Producto
+
 class emuladorDB:
     def __init__(self):
         self.listaUsuarios=[]
         self.listaProductos=[]
 
-    def addProducto(self,producto):
-       self.listaProductos.append(producto)
-
-    def addUsuario(self,usuario):
-        self.listaUsuarios.append(usuario)
-
     def listarUsuarios(self,level='cliente'):
         for usuario in self.listaUsuarios:
             if usuario.level==level:
                 usuario.print()
-
 
     def listarProductos(self):
         for producto in self.listaProductos:
@@ -23,23 +21,6 @@ class emuladorDB:
         for producto in self.listaProductos:
             if producto.cantidad > 0: producto.print()
 
-    def updateUsuario(self,email,opcion,valor):
-        for user in self.listaUsuarios:
-            if user.email == email:
-
-                self.listaUsuarios.remove(user)
-
-                if opcion=='password':
-                    user.password=valor
-                    break
-                elif opcion=='email':
-                    user.email=valor
-                    break
-                elif opcion=='carrito':
-                    user.carrito=valor
-                    break
-                
-                self.listaUsuarios.append(user)
 
     def createUsuario(self,email,apellido,nombre,password,level):
         if level == 'cliente':
@@ -49,7 +30,7 @@ class emuladorDB:
         elif level == 'reporter':
             usuario= Reporter(email,apellido,nombre,password)
                 
-        self.addUsuario(usuario)
+        self.listaUsuarios.append(usuario)
 
     def validaPassword(self,email,password):
         for user in self.listaUsuarios:
@@ -58,9 +39,14 @@ class emuladorDB:
             else:
                 return False
 
+    def retornaUsuario(self,email,password):
+        for user in self.listaUsuarios:
+            if user.email == email and user.password == password:
+                if user.email == email: return user
+
     def createProducto(self,codigo,nombre,precio,stock):
         producto=Producto(codigo,nombre,precio,stock)
-        self.addProducto(producto)
+        self.listaProductos.append(producto)
 
     def updateProducto(self,codigo,opcion,valor):
         for producto in self.listaProductos:

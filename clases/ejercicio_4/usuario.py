@@ -1,41 +1,25 @@
 class Usuario:
-    def __init__(self, usuario, nombre, apellido, email, password):
-        self.usuario = usuario
+    def __init__(self, email, apellido, nombre,  password):
         self.nombre = nombre
         self.apellido = apellido
         self.email = email
         self.password = password
+        self.level = ""
 
-    def presentarse(self):
+    def print(self):
         print("-" * 20)
-        print(f"""Hola soy {self.nombre} {self.apellido}.
-               Mi email es {self.email} y mi password es {self.password}""")
+        print(f"Nombre y Apellido: {self.nombre} {self.apellido}")
+        print(f"Email: {self.email} - Password: {self.password}")
         print("-" * 20)
-
-    # Pide al usuario una clave y chequea si es 
-    # la misma que fue declarada al crear el usuario
-    # Es usada para validar al usuario al cambiar su email y password
-    def login(self):
-        enteredUsuario = input(f"Ingrese su usuario: ")
-        enteredPassword = input(f"Ingrese su contraseña: ")
-        if self.usuario == enteredUsuario  and self.password == enteredPassword:
-            print("Usted ha sido verificado")
-            print("-" * 20)
-            return True
-        
-        elif self.password != enteredPassword:
-            print (f"Contraseña incorrecta")
-                    
-        elif self.usuario not in listaUsuarios:
-            print(f"No encontramos un usuario con ese nombre")
-            print("-" * 20)
+       
     
     # Valida al usuario como tal con validarPassword()
     # Si la contraseña que ingresa es correcta pide que se ingrese la nueva contraseña 2 veces
     # Si las contraseñas ingresadas son iguales, actualiza el valor self.password 
-    def cambiarPassword(self):
+    def cambiarPassword(self,emuladorDB):
         print(f"Para cambiar su contraseña necesitamos verificarlo como usuario")
-        if self.login() == True:
+        password=input('ingrese su clave actual: ')
+        if emuladorDB.validaPassword(self.email,password) == True:
             newPassword = input(f"Ingrese su nueva password: ")
             retryNewPassword = input(f"Para confirmar, ingrese nuevamente su nueva password: ")
             
@@ -52,10 +36,10 @@ class Usuario:
     # Valida al usuario como tal con login()
     # Si la contraseña que ingresa es correcta pide que se ingrese la contraseña
     # Si las contraseñas ingresadas son iguales, actualiza el valor self.email 
-    def cambiarEmail(self):
-        print(f"Para cambiar su email necesitamos verificarlo como usuario")
-        
-        if self.login() == True:
+    def cambiarEmail(self,emuladorDB):
+        print(f"Para cambiar su contraseña necesitamos verificarlo como usuario")
+        password=input('ingrese su clave actual: ')
+        if emuladorDB.validaPassword(self.email,password) == True:
             newEmail = input(f"Ingrese su nuevo email: ")
             retrynewEmail = input(f"Para confirmar, ingrese nuevamente su nuevo email: ")
 
@@ -69,10 +53,3 @@ class Usuario:
         else:
             print(f"La password es incorrecta. Intente nuevamente")
             print("-" * 20)
-
-
-Juan = Usuario("carlos", "juancarlos@gmail.com", "password")
-Juan.presentarse()
-Juan.cambiarPassword()
-Juan.cambiarEmail()
-Juan.presentarse()

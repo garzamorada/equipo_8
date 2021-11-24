@@ -6,5 +6,5 @@ class Producto:
         self.cantidad=cantidad
 
     def print(self):
-        print(self.codigo.ljust(10),' - ',self.nombre.rjust(30),' : ','ARS $',str(self.precio).ljust(6),' - ',str(self.stock).rjust(6),' unidades')
+        print(self.codigo.ljust(10),' - ',self.nombre.rjust(30),' : ','ARS $',str(self.precio).ljust(6),' - ',str(self.cantidad).rjust(6),' unidades')
         
