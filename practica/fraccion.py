@@ -1,14 +1,43 @@
 """esta clase va a manejar las fracciones"""
 
 def validaEntero(funcion):
-    def validar(**kwargs):
-        try:
-            numero1=int(kwargs['numerador'])
-            numero2=int(kwargs['denominador'])
-        except ValueError:
-            print('los numeros deben ser enteros')
-        return funcion(numero1, numero2)
+    def validar(*args):
+        if len(args) == 2:
+            numero1=args[0]
+            numero2=args[1]
+            numero1=convierteTipo(numero1)
+            numero2=convierteTipo(numero2)
+            return funcion(numero1, numero2)
+        elif len(args) == 3:
+            numero1=args[1]
+            numero2=args[2]
+            numero1=convierteTipo(numero1)
+            numero2=convierteTipo(numero2)
+            return funcion(args[0], numero1, numero2)
+        else: 
+            print('Error: numero de argumentos invalido')
+            return False        
     return validar
+
+
+def convierteTipo(variable):
+    if type(variable) == float:
+        try:
+            variable=int(round(variable))
+        except Exception as e:
+            print('Error: ', e)
+    elif type(variable) == str:
+        try:
+            variable=int(variable)
+        except Exception as e:
+            print('Error: ', e)
+    elif type(variable) == int:
+        pass
+    else:
+        print('Error: los argumentos deben str, float o int')
+        print('variable: ',type(variable))
+        return False
+    return variable
 
 
 class Fraccion:
@@ -28,7 +57,7 @@ class Fraccion:
             nuevoDenominador = self.denominador
         else:
             nuevoDenominador=self.mcm(self.denominador, otraFraccion.denominador)
-            nuevoNumerador=self.numerador*int(nuevoDenominador/self.denominador) + otraFraccion.numerador*int(nuevoDenominador/otraFraccion.denominador)     
+            nuevoNumerador=self.numerador*(nuevoDenominador/self.denominador) + otraFraccion.numerador*(nuevoDenominador/otraFraccion.denominador)     
         return Fraccion(nuevoNumerador, nuevoDenominador)
 
     def restar(self, otraFraccion):
@@ -37,24 +66,25 @@ class Fraccion:
             nuevoDenominador = self.denominador
         else:
             nuevoDenominador=self.mcm(self.denominador, otraFraccion.denominador)
-            nuevoNumerador=self.numerador*int(nuevoDenominador/self.denominador) - otraFraccion.numerador*(nuevoDenominador/otraFraccion.denominador)     
+            nuevoNumerador=self.numerador*(nuevoDenominador/self.denominador) - otraFraccion.numerador*(nuevoDenominador/otraFraccion.denominador)     
         return Fraccion(nuevoNumerador, nuevoDenominador)
 
     def mcm(self,numero1, numero2):
         lista1=[]
         lista2=[]
-        lista3=[]
+        vacia=True
         for i in range(1,10):
             lista1.append(numero1*i)
             lista2.append(numero2*i)
+            lista1.sort()
         for numero in lista1:
             if numero in lista2:
-                lista3.append(numero)
-        if len(lista3)==0:
+                vacia = False
+                return numero
+        if vacia == True:
             return numero1*numero2
-        else:
-            return min(lista3)
 
+    @validaEntero
     def MCD(self,numero1, numero2):
         lista1=[]
         lista2=[]
@@ -80,12 +110,12 @@ class Fraccion:
     def dividir(self, otraFraccion):
         pass
     
-@validaEntero
+
 def carga():
     fraccion=input('ingrese la fraccion separada por ,: ')
     numeros=fraccion.split(',')
-    numerador=int(numeros[0])
-    denominador=int(numeros[1])
+    numerador=numeros[0]
+    denominador=numeros[1]
     return Fraccion(numerador, denominador)
 
 fraccion1=carga()
