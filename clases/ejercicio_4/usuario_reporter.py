@@ -1,33 +1,41 @@
 from usuario import Usuario
 
 class Reporter(Usuario):
-    def __init__(self,email, nombre, apellido, password):
-        Usuario.__init__(self, email, nombre, apellido, password)
+    def __init__(self,email, nombre, apellido, password,sistema):
+        Usuario.__init__(self, email, nombre, apellido, password, sistema)
         self.level = 'reporter'
 
-    def verCarritos(self,listaUsuarios):
-        for usuario in listaUsuarios:
+    def verCarritos(self):
+        todosLosCarritos = []
+        total=0
+        for usuario in self.sistema.listaUsuarios:
             if usuario.level == 'cliente':
-                print('-------------------------------------')
-                print(' carrito del usuario',usuario.nombre,usuario.apellido)
-                print(' ')
-                usuario.carrito.muestraCarrito()
-                print('-------------------------------------')
+                todosLosCarritos.extend(usuario.carrito.listaDeCompras)
+        print('-'.center(84,'-'))
+        print('Codigo'.ljust(10),' - ','Nombre'.rjust(30),' : ','Precio'.ljust(11),' - ','Cantidad'.rjust(15))
+        for producto in todosLosCarritos:
+            producto.print()
+            total+=producto.precio*producto.cantidad
+        print( ' ')
+        print('El total vendido es ARS$ ',total)
+        print('-'.center(84,'-'))
 
-    def menuReporter(self,listaUsuarios):
+
+
+    def menuReporter(self):
         opcion=0
         while opcion != 99:
-            print('----------------------------------')
+            print('-'.center(84,'-'))
             print(' 1  -  Ver Carritos de Compra')
             print(' 99 -  Terminar y Salir')
-            print('----------------------------------')
+            print('-'.center(84,'-'))
             opcion=int(input('ingrese la opcipn deseada: '))
 
             if opcion == 1:
                 print(' ')
-                print('-----------------------------------------')
-                self.verCarritos(listaUsuarios)
-                print('-----------------------------------------')
+                print('-'.center(84,'-'))
+                self.verCarritos()
+                print('-'.center(84,'-'))
                 print(' ')
             else:
                 print(' ')
@@ -36,7 +44,7 @@ class Reporter(Usuario):
                 break
             
             print(' ')
-            print('-----------------------------------------------')
+            print('-'.center(84,'-'))
             tecla=input ('presione retorno (enter) para continuar...')
             print(' ')
             if tecla != None or tecla == None : 

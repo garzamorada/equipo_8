@@ -3,47 +3,47 @@ from usuario import Usuario
 
 class Admin(Usuario):
 
-    def __init__(self,email, nombre, apellido, password):
-        Usuario.__init__(self, email, nombre, apellido, password)
+    def __init__(self,email, nombre, apellido, password,sistema):
+        Usuario.__init__(self, email, nombre, apellido, password, sistema)
         self.level = 'admin'
 
     #No hace falta volver a decalarar metodos herederados de la clase padre (Usuario)
 
-    def verUsuarios(self,listaUsuarios):
-        for usuario in listaUsuarios:
+    def verUsuarios(self):
+        for usuario in self.sistema.listaUsuarios:
             if usuario.level == 'cliente':
                 usuario.print()
     
-    def verCarritos(self,listaUsuarios):
-        for usuario in listaUsuarios:
+    def verCarritos(self):
+        for usuario in self.sistema.listaUsuarios:
             if usuario.level == 'cliente':
-                print('-------------------------------------')
+                print('-'.center(84,'-'))
                 print(' carrito del usuario',usuario.nombre,usuario.apellido)
                 print(' ')
                 usuario.carrito.muestraCarrito()
-                print('-------------------------------------')
+                print('-'.center(84,'-'))
 
-    def menuAdmin(self,listaUsuarios):
+    def menuAdmin(self):
         opcion=0
         while opcion != 99:
-            print('----------------------------------')
+            print('-'.center(84,'-'))
             print(' 1  -  Listar Clientes')
             print(' 2  -  Ver Carritos de Compra')
             print(' 99 -  Terminar y Salir')
-            print('----------------------------------')
+            print('-'.center(84,'-'))
             opcion=int(input('ingrese la opcipn deseada: '))
 
             if opcion == 1:
                 print(' ')
-                print('-----------------------------------------')
-                self.verUsuarios(listaUsuarios)
-                print('-----------------------------------------')
+                print('-'.center(84,'-'))
+                self.verUsuarios()
+                print('-'.center(84,'-'))
                 print(' ')
             elif opcion == 2:
                 print(' ')
-                print('-----------------------------------------')
-                self.verCarritos(listaUsuarios)
-                print('-----------------------------------------')
+                print('-'.center(84,'-'))
+                self.verCarritos()
+                print('-'.center(84,'-'))
                 print(' ')
             else:
                 print(' ')
@@ -52,7 +52,7 @@ class Admin(Usuario):
                 break
 
             print(' ')
-            print('-----------------------------------------------')
+            print('-'.center(84,'-'))
             tecla=input ('presione retorno (enter) para continuar...')
             print(' ')
             if tecla != None or tecla == None : 

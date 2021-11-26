@@ -2,15 +2,15 @@ from usuario import Usuario
 from carrito import Carrito
 
 class Cliente(Usuario):
-    def __init__(self,email, nombre, apellido, password):
-        Usuario.__init__(self, email, nombre, apellido, password)
+    def __init__(self,email, nombre, apellido, password,sistema):
+        Usuario.__init__(self, email, nombre, apellido, password, sistema)
         self.level = "cliente"
-        self.carrito = Carrito() 
+        self.carrito = Carrito(sistema)
     
-    def menuOpciones(self, emuladorDB):
+    def menuOpciones(self):
         opcion=0
         while opcion != 99:
-            print('----------------------------------')
+            print('-'.center(84,'-'))
             print(' 1  -  Listar Productos en Stock')
             print(' 2  -  Ver Carrito de Compras')
             print(' 3  -  Agregar productos al carrito')
@@ -18,11 +18,11 @@ class Cliente(Usuario):
             print(' 5  -  Vaciar Carrito de Compras')
             print(' 6  -  Confirmar Compra y Salir')
             print(' 7  -  Cancelar Compra y Salir')
-            print('----------------------------------')
+            print('-'.center(84,'-'))
             opcion=int(input('ingrese la opcipn deseada: '))
 
             if opcion==1:
-                self.carrito.muestraProductos(emuladorDB)
+                self.carrito.muestraProductos()
             elif opcion==2:
                 self.carrito.muestraCarrito()
             elif opcion==4:
@@ -31,7 +31,7 @@ class Cliente(Usuario):
                 self.carrito.listaDeCompras.clear()
             elif opcion==6:
                 for producto in self.carrito.listaDeCompras:
-                    emuladorDB.updateProducto(producto.codigo,'restastock',producto.stock)
+                    self.sistema.updateProducto(producto.codigo,'restastock',producto.stock)
                 print('el total a pagar es de ARS$ ', self.carrito.TotalAPagar)
                 print('gracias por su compra')
                 opcion=99
@@ -41,10 +41,10 @@ class Cliente(Usuario):
                 opcion==99
                 break
             elif opcion==3:
-                self.carrito.agregarAlCarrito(emuladorDB)
+                self.carrito.agregarAlCarrito()
             
             print(' ')
-            print('-----------------------------------------------')
+            print('-'.center(84,'-'))
             tecla=input ('presione retorno (enter) para continuar...')
             print(' ')
             if tecla != None or tecla == None : 

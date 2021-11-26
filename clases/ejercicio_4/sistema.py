@@ -3,7 +3,7 @@ from usuario_admin import Admin
 from usuario_reporter import Reporter
 from producto import Producto
 
-class emuladorDB:
+class Sistema:
     def __init__(self):
         self.listaUsuarios=[]
         self.listaProductos=[]
@@ -22,13 +22,13 @@ class emuladorDB:
             if producto.cantidad > 0: producto.print()
 
 
-    def createUsuario(self,email,apellido,nombre,password,level):
+    def createUsuario(self,email,apellido,nombre,password,level,sistema):
         if level == 'cliente':
-            usuario= Cliente(email,apellido,nombre,password )
+            usuario= Cliente(email,apellido,nombre,password,sistema)
         elif level == 'admin':
-            usuario= Admin(email,apellido,nombre,password)
+            usuario= Admin(email,apellido,nombre,password,sistema)
         elif level == 'reporter':
-            usuario= Reporter(email,apellido,nombre,password)
+            usuario= Reporter(email,apellido,nombre,password,sistema)
                 
         self.listaUsuarios.append(usuario)
 

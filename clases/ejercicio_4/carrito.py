@@ -1,21 +1,22 @@
 from producto import Producto
 
 class Carrito:
-    def __init__(self):
+    def __init__(self,sistema):
         self.listaDeCompras=[]
         self.TotalAPagar=0
+        self.sistema=sistema
     
-    def muestraProductos(self,emuladorDB):
+    def muestraProductos(self):
         print('Codigo'.ljust(10),' - ','Nombre'.rjust(30),' : ','Precio'.ljust(11),' - ','cantidad'.rjust(15))
-        emuladorDB.listarProductosEnStock()
+        self.sistema.listarProductosEnStock()
     
-    def agregarAlCarrito(self,emuladorDB):
-        self.muestraProductos(emuladorDB)
+    def agregarAlCarrito(self):
+        self.muestraProductos()
         print(' ')
         item=input('ingrese el codigo del producto: ')
         cantidad=int(input('ingrese la cantidad deseada: '))
         find = False
-        for producto in emuladorDB.listaProductos:
+        for producto in self.sistema.listaProductos:
             if producto.codigo==item and producto.cantidad >= cantidad:
                 productoCarrito=Producto(item,producto.nombre,producto.precio,cantidad)
                 self.listaDeCompras.append(productoCarrito)

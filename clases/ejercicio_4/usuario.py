@@ -1,25 +1,26 @@
 class Usuario:
-    def __init__(self, email, apellido, nombre,  password):
+    def __init__(self, email, apellido, nombre,  password, sistema):
         self.nombre = nombre
         self.apellido = apellido
         self.email = email
         self.password = password
+        self.sistema=sistema
         self.level = ""
 
     def print(self):
-        print("-" * 20)
+        print('-'.center(84,'-'))
         print(f"Nombre y Apellido: {self.nombre} {self.apellido}")
         print(f"Email: {self.email} - Password: {self.password}")
-        print("-" * 20)
+        print('-'.center(84,'-'))
        
     
     # Valida al usuario como tal con validarPassword()
     # Si la contraseña que ingresa es correcta pide que se ingrese la nueva contraseña 2 veces
     # Si las contraseñas ingresadas son iguales, actualiza el valor self.password 
-    def cambiarPassword(self,emuladorDB):
+    def cambiarPassword(self):
         print(f"Para cambiar su contraseña necesitamos verificarlo como usuario")
         password=input('ingrese su clave actual: ')
-        if emuladorDB.validaPassword(self.email,password) == True:
+        if self.sistema.validaPassword(self.email,password) == True:
             newPassword = input(f"Ingrese su nueva password: ")
             retryNewPassword = input(f"Para confirmar, ingrese nuevamente su nueva password: ")
             
@@ -30,7 +31,7 @@ class Usuario:
                 print(f"Sus passwords no coinciden. Ingreso {newPassword} y {retryNewPassword}")
         else:
             print(f"La password es incorrecta. Intente nuevamente")
-            print("-" * 20)
+            print('-'.center(84,'-'))
     
     # Idéntico en estructura a cambiarPassword()
     # Valida al usuario como tal con login()
@@ -52,4 +53,4 @@ class Usuario:
         
         else:
             print(f"La password es incorrecta. Intente nuevamente")
-            print("-" * 20)
+            print('-'.center(84,'-'))
