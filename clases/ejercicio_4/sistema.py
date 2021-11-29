@@ -58,10 +58,10 @@ class Sistema:
                     producto.nombre=valor
                     break
                 elif opcion=='restastock':
-                    producto.stock=producto.stock-valor
+                    producto.cantidad=producto.cantidad-valor
                     break
-                elif opcion=='sumastock':
-                    producto.stock=producto.stock+valor
+                elif opcion=='stock':
+                    producto.cantidad=valor
                     break
 
             
