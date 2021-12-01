@@ -1,10 +1,20 @@
 from usuario import Usuario
 
+def validaReporter(func):
+    def wrapper(*Args):
+        if Args[0].level == 'reporter':
+            return func(*Args)
+        else:
+            print("No puedes hacer esto")
+            return False
+    return wrapper
+
 class Reporter(Usuario):
     def __init__(self,email, nombre, apellido, password,sistema):
         Usuario.__init__(self, email, nombre, apellido, password, sistema)
         self.level = 'reporter'
 
+    @validaReporter
     def verCarritos(self):
         todosLosCarritos = []
         total=0
@@ -21,7 +31,7 @@ class Reporter(Usuario):
         print('-'.center(84,'-'))
 
 
-
+    @validaReporter
     def menuReporter(self):
         opcion=0
         while opcion != 99:
