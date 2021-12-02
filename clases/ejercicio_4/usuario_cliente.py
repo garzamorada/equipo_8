@@ -7,7 +7,7 @@ class Cliente(Usuario):
         self.level = "cliente"
         self.carrito = Carrito(sistema)
     
-    def menuOpciones(self):
+    def menuOpciones(self,menu):
         opcion=0
         while opcion != 99:
             print('-'.center(84,'-'))
@@ -18,6 +18,7 @@ class Cliente(Usuario):
             print(' 5  -  Vaciar Carrito de Compras')
             print(' 6  -  Confirmar Compra y Salir')
             print(' 7  -  Cancelar Compra y Salir')
+            print(' 99 -  Volver al menu principal')
             print('-'.center(84,'-'))
             opcion=int(input('ingrese la opcipn deseada: '))
 
@@ -39,9 +40,11 @@ class Cliente(Usuario):
                 self.carrito.listaDeCompras.clear()
                 print('lo esperamos nuevamente')
                 opcion==99
-                break
             elif opcion==3:
                 self.carrito.agregarAlCarrito()
+            elif opcion==99:
+                print('volviendo al menu principal')
+                menu.muestraMenu()
             
             print(' ')
             print('-'.center(84,'-'))

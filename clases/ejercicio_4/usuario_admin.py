@@ -23,7 +23,7 @@ class Admin(Usuario):
                 usuario.carrito.muestraCarrito()
                 print('-'.center(84,'-'))
 
-    def menuAdmin(self):
+    def menuAdmin(self,menu):
         opcion=0
         while opcion != 99:
             print('-'.center(84,'-'))
@@ -35,7 +35,7 @@ class Admin(Usuario):
             print(' 6  -  Modificar nombre de producto')
             print(' 7  -  Modificar precio de producto')
             print(' 8  -  Alta de productos')
-            print(' 99 -  Terminar y Salir')
+            print(' 99 -  Volver al menu principal')
             print('-'.center(84,'-'))
             opcion=int(input('ingrese la opcipn deseada: '))
 
@@ -100,11 +100,10 @@ class Admin(Usuario):
                 print(' el codigo de producto asignado es: ', codigo)
                 print('-'.center(84,'-'))
                 print(' ')
-            else:
+            elif opcion==99:
                 print(' ')
-                print(' hasta la proxima')
-                opcion=99
-                break
+                print(' volviendo al menu principal')
+                menu.muestraMenu()
 
             print(' ')
             print('-'.center(84,'-'))

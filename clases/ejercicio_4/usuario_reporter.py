@@ -14,6 +14,7 @@ class Reporter(Usuario):
         Usuario.__init__(self, email, nombre, apellido, password, sistema)
         self.level = 'reporter'
 
+
     @validaReporter
     def verCarritos(self):
         todosLosCarritos = []
@@ -32,7 +33,7 @@ class Reporter(Usuario):
 
 
     @validaReporter
-    def menuReporter(self):
+    def menuReporter(self,menu):
         opcion=0
         while opcion != 99:
             print('-'.center(84,'-'))
@@ -49,9 +50,9 @@ class Reporter(Usuario):
                 print(' ')
             else:
                 print(' ')
-                print(' hasta la proxima')
+                print(' volviendo al menu principal')
                 opcion=99
-                break
+                menu.muestraMenu()
             
             print(' ')
             print('-'.center(84,'-'))

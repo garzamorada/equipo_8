@@ -22,13 +22,13 @@ class Sistema:
             if producto.cantidad > 0: producto.print()
 
 
-    def createUsuario(self,email,apellido,nombre,password,level,sistema):
+    def createUsuario(self,email,apellido,nombre,password,level):
         if level == 'cliente':
-            usuario= Cliente(email,apellido,nombre,password,sistema)
+            usuario= Cliente(email,apellido,nombre,password,self)
         elif level == 'admin':
-            usuario= Admin(email,apellido,nombre,password,sistema)
+            usuario= Admin(email,apellido,nombre,password,self)
         elif level == 'reporter':
-            usuario= Reporter(email,apellido,nombre,password,sistema)
+            usuario= Reporter(email,apellido,nombre,password,self)
                 
         self.listaUsuarios.append(usuario)
 
